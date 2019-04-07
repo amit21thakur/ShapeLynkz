@@ -1,0 +1,7 @@
+
+DrawShapesService/.vs/
+*.dll
+*.pdb
+DrawShapesService/DrawShapesService/bin/
+DrawShapesService/DrawShapesService/obj/
+../ui/
