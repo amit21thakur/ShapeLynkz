@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Middleware\" />
+    <Folder Include="SyntaxValidator\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
