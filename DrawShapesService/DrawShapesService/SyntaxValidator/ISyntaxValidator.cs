@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DrawShapesService.SyntaxValidator
 {
-    interface ISyntaxValidator
+    public interface ISyntaxValidator
     {
         bool IsSyntaxValid(string word);
     }

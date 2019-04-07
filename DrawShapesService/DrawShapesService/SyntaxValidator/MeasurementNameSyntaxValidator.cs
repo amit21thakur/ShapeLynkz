@@ -6,9 +6,8 @@ namespace DrawShapesService.SyntaxValidator
     public class MeasurementNameSyntaxValidator : ISyntaxValidator
     {
         private readonly HashSet<string> _expectedWords;
-        public MeasurementNameSyntaxValidator()
-        {
-            _expectedWords = new HashSet<string>
+
+        public MeasurementNameSyntaxValidator() => _expectedWords = new HashSet<string>
             {
                 "width",
                 "base",
@@ -16,10 +15,7 @@ namespace DrawShapesService.SyntaxValidator
                 "side_length",
                 "radius"
             };
-        }
-        public bool IsSyntaxValid(string word)
-        {
-            return _expectedWords.Contains(word.ToLower());
-        }
+
+        public bool IsSyntaxValid(string word) => _expectedWords.Contains(word.ToLower());
     }
 }

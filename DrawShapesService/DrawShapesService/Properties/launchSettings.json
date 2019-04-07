@@ -11,12 +11,12 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/pets",
+      "launchUrl": "api/shape",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "GenderPetService": {
+    "DrawShapesService": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/",

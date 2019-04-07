@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using DrawShapesService.Middleware;
 using Serilog;
+using DrawShapesService.Processor;
 
 namespace DrawShapesService
 {
@@ -69,6 +70,8 @@ namespace DrawShapesService
             builder.Populate(services);
 
             builder.RegisterType<DrawShapesController>();
+            builder.RegisterInstance(new QueryFormatProcessing()).As<IQueryFormatProcessing>();
+
 
             Container = builder.Build();
             return new AutofacServiceProvider(Container);
