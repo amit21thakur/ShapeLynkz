@@ -1,8 +1,10 @@
+### Sample Queries
+
 Draw an isosceles triangle with a height of 200 and a width of 100
 
 Draw a square with a side length of 200
 
-Draw a scalene triangle with a width of 200 and a height of 200 and a side of 300.
+Draw a scalene triangle with a width of 200 and a height of 200 and a side length of 300.
 
 Draw a Parallelogram  with a base of 300 and a height of 400 and a width of 350.
 
