@@ -10,6 +10,7 @@ namespace DrawShapesService.Processor
         public string FormatQuery(string query)
         {
             query = query.Trim().ToLower();
+            query = query.TrimEnd('.');
             for (int i = 0; i < 20; i++)
                 query = query.Replace("  ", " ");
             query = query.Replace("isosceles triangle", "isosceles_triangle");
