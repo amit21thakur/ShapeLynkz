@@ -8,9 +8,9 @@ namespace DrawShapesService.Validators
         {
             ExpectedKeys = new List<string>
             {
-                "draw",
-                "height",
-                "width"
+                Constants.Draw,
+                Constants.Measurements.Height,
+                Constants.Measurements.Width
             };
         }
     }

@@ -13,10 +13,10 @@ namespace DrawShapesService.Processor
             query = query.TrimEnd('.');
             for (int i = 0; i < 20; i++)
                 query = query.Replace("  ", " ");
-            query = query.Replace("isosceles triangle", "isosceles_triangle");
-            query = query.Replace("scalene triangle", "scalene_triangle");
-            query = query.Replace("equilateral triangle", "equilateral_triangle");
-            query = query.Replace("side length", "side_length");
+            query = query.Replace("isosceles triangle", Constants.Shapes.IsoscelesTriangle);
+            query = query.Replace("scalene triangle", Constants.Shapes.ScaleneTriangle);
+            query = query.Replace("equilateral triangle", Constants.Shapes.EquilateralTriangle);
+            query = query.Replace("side length", Constants.Measurements.SideLength);
             return query;
         }
     }

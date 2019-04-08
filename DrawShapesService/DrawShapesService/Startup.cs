@@ -12,6 +12,7 @@ using Newtonsoft.Json.Converters;
 using DrawShapesService.Middleware;
 using Serilog;
 using DrawShapesService.Processor;
+using DrawShapesService.Validators;
 
 namespace DrawShapesService
 {
@@ -71,7 +72,18 @@ namespace DrawShapesService
 
             builder.RegisterType<DrawShapesController>();
             builder.RegisterInstance(new QueryFormatProcessing()).As<IQueryFormatProcessing>();
-
+            builder.RegisterType<CircleValidator>().Named<ShapeValidator>(Constants.Shapes.Circle);
+            builder.RegisterType<IsoscelesTriangleValidator>().Named<ShapeValidator>(Constants.Shapes.IsoscelesTriangle);
+            builder.RegisterType<OvalValidator>().Named<ShapeValidator>(Constants.Shapes.Oval);
+            builder.RegisterType<ParallelogramValidator>().Named<ShapeValidator>(Constants.Shapes.Parallelogram);
+            builder.RegisterType<RectangleValidator>().Named<ShapeValidator>(Constants.Shapes.Rectangle);
+            builder.RegisterType<ScaleneTriangleValidator>().Named<ShapeValidator>(Constants.Shapes.ScaleneTriangle);
+            builder.RegisterType<RegularPolygonValidator>().Named<ShapeValidator>(Constants.Shapes.Square);
+            builder.RegisterType<RegularPolygonValidator>().Named<ShapeValidator>(Constants.Shapes.EquilateralTriangle);
+            builder.RegisterType<RegularPolygonValidator>().Named<ShapeValidator>(Constants.Shapes.Pentagon);
+            builder.RegisterType<RegularPolygonValidator>().Named<ShapeValidator>(Constants.Shapes.Hexagon);
+            builder.RegisterType<RegularPolygonValidator>().Named<ShapeValidator>(Constants.Shapes.Heptagon);
+            builder.RegisterType<RegularPolygonValidator>().Named<ShapeValidator>(Constants.Shapes.Octagon);
 
             Container = builder.Build();
             return new AutofacServiceProvider(Container);

@@ -15,7 +15,7 @@ namespace DrawShapesService.Processor
             IDataReader keyReader = new KeyReader();
             IDataReader valueReader = new ValueReader();
 
-            Node root = new Node(new OneWordSyntaxValidator("Draw"), keyReader);
+            Node root = new Node(new OneWordSyntaxValidator(Constants.Draw), keyReader);
             Node temp = root.NextNode = new Node(new WordListSyntaxValidator(new HashSet<string> { "a", "an" }), null);
             temp = temp.NextNode = new Node(new ShapeNameSyntaxValidator(), valueReader);
             temp = temp.NextNode = new Node(new OneWordSyntaxValidator("with"), null);

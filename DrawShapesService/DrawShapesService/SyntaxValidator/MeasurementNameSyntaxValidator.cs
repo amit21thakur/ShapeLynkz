@@ -9,11 +9,11 @@ namespace DrawShapesService.SyntaxValidator
 
         public MeasurementNameSyntaxValidator() => _expectedWords = new HashSet<string>
             {
-                "width",
-                "base",
-                "height",
-                "side_length",
-                "radius"
+                Constants.Measurements.Width,
+                Constants.Measurements.Base,
+                Constants.Measurements.Height,
+                Constants.Measurements.SideLength,
+                Constants.Measurements.Radius
             };
 
         public bool IsSyntaxValid(string word) => _expectedWords.Contains(word.ToLower());

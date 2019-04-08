@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Autofac;
 using DrawShapesService.Models;
 using DrawShapesService.Processor;
 using DrawShapesService.Validators;
@@ -18,10 +19,12 @@ namespace DrawShapesService.Controllers
     {
         private readonly ILogger _logger;
         private readonly IQueryFormatProcessing _queryFormatProcesser;
+        private readonly IComponentContext _container;
 
-        public DrawShapesController(IQueryFormatProcessing queryFormatProcesser, ILogger<DrawShapesController> logger )
+        public DrawShapesController(IQueryFormatProcessing queryFormatProcesser, IComponentContext container, ILogger<DrawShapesController> logger )
         {
             _queryFormatProcesser = queryFormatProcesser;
+            _container = container;
             _logger = logger; 
         }
 
@@ -66,32 +69,8 @@ namespace DrawShapesService.Controllers
             //for example - an invalid query could be "Draw a square with a radius of 200"
             //We need to check for these discrepancies in the following code
 
-            string shapeName = items.Where(x => x.Key.ToLower() == "draw").Select(x => x.Value).First();
-            ShapeValidator validator = null;
-            switch (shapeName.ToLower())
-            {
-                case "circle":
-                    validator = new CircleValidator();
-                    break;
-                case "isosceles_triangle":
-                    validator = new IsoscelesTriangleValidator();
-                    break;
-                case "oval":
-                    validator = new OvalValidator();
-                    break;
-                case "parallelogram":
-                    validator = new ParallelogramValidator();
-                    break;
-                case "rectangle":
-                    validator = new RectangleValidator();
-                    break;
-                case "scalene_triangle":
-                    validator = new ScaleneTriangleValidator();
-                    break;
-                default:
-                    validator = new RegularPolygonValidator();
-                    break;
-            }
+            string shapeName = items.Where(x => x.Key.ToLower() == Constants.Draw).Select(x => x.Value).First();
+            var validator = _container.ResolveNamed<ShapeValidator>(shapeName.ToLower());
 
             if (!validator.Validate(items.ToList()))
             {
