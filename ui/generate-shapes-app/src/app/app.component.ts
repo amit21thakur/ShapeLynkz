@@ -18,7 +18,8 @@ export class AppComponent {
   {
     this._shapeService = shapeService;
   }
-  
+
+  result = null;
   queryText:string;
 
   DecodeQuery(){
@@ -26,8 +27,8 @@ export class AppComponent {
       this._shapeService.decode(this.queryText).subscribe(
         (response) => {
           console.log(response);
-          //this.result = response;
-          
+          this.result = response;
+          console.log(this.result);
       },
         (err) => {
           console.log(err)
