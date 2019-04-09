@@ -37,6 +37,10 @@ export class AppComponent {
   }
 
   polygonPoints = "";
+  isoscelesTrianglePoints = "";
+  scaleneTrianglePoints = "";
+  parallelogramPoints = "";
+
   isRegularPolygon = false;
 
    setData(response)
@@ -51,39 +55,49 @@ export class AppComponent {
       response.name == "heptagon" || 
       response.name == "octagon";
       if(this.isRegularPolygon)    
-          {
-            var polygon = require("polygon-generator");
-            var sides = 0;
-            switch(response.name)
-            {
-              case "equilateral_triangle":
-              sides = 3;
-              break;
-              case "square":
-              sides = 4;
-              break;
-              case "pentagon":
-              sides = 5;
-              break;
-              case "hexagon":
-              sides = 6;
-              break;
-              case "heptagon":
-              sides = 7;
-              break;
-              case "octagon":
-              sides = 8;
-              break;
-            }
-            var vertices = polygon.coordinates(sides, response.side_length, 0);
-            var i;
-            for (i = 0; i < vertices.length; i++) 
-            { 
-              this.polygonPoints += vertices[i].x + "," + vertices[i].y + "  ";
-            }
-            //console.log(vertices);
-            //polygonPoints
-          }
+      {
+        var polygon = require("polygon-generator");
+        var sides = 0;
+        switch(response.name)
+        {
+          case "equilateral_triangle":
+          sides = 3;
+          break;
+          case "square":
+          sides = 4;
+          break;
+          case "pentagon":
+          sides = 5;
+          break;
+          case "hexagon":
+          sides = 6;
+          break;
+          case "heptagon":
+          sides = 7;
+          break;
+          case "octagon":
+          sides = 8;
+          break;
+        }
+        var vertices = polygon.coordinates(sides, response.side_length, 0);
+        var i;
+        for (i = 0; i < vertices.length; i++) 
+        { 
+          this.polygonPoints += vertices[i].x + "," + vertices[i].y + "  ";
+        }
+      }
+      if(response.name === "isosceles_triangle")
+      {
+
+      }
+      if(response.name === "scalene_triangle")
+      {
+
+      }
+      if(response.name === "parallelogram")
+      {
+
+      }
    }
 
 }

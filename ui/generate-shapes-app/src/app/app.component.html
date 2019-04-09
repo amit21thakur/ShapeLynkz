@@ -30,5 +30,13 @@
       <polygon [attr.points]="this.polygonPoints" style="fill:white;stroke:black;stroke-width:1" />
     </svg>
 
+    <!--rectangle-->
+    <svg *ngIf="this.result.name === 'rectangle'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
+      <rect [attr.width]="this.result.width" height="this.result.height" style="fill:white;stroke-width:1;stroke:rgb(0,0,0)" />
+    </svg>
+
+    <!--isoscles triangle-->
+    <!--scalene triangle-->
+    <!--parallelogram-->
   </div>
 </div>
