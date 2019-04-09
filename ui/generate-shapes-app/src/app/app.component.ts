@@ -36,23 +36,52 @@ export class AppComponent {
       );
   }
 
-  polygonPoints:string;
-  
+  polygonPoints = "";
+  isRegularPolygon = false;
+
    setData(response)
    {
      this.result = response;
 
-     if( response.name == "equilateral_triangle" || 
-          response.name == "square" || 
-          response.name == "pentagon" || 
-          response.name == "hexagon" || 
-          response.name == "heptagon" || 
-          response.name == "octagon" )
+     this.isRegularPolygon =
+      response.name == "equilateral_triangle" || 
+      response.name == "square" || 
+      response.name == "pentagon" || 
+      response.name == "hexagon" || 
+      response.name == "heptagon" || 
+      response.name == "octagon";
+      if(this.isRegularPolygon)    
           {
             var polygon = require("polygon-generator");
-            var sides = 5;
+            var sides = 0;
+            switch(response.name)
+            {
+              case "equilateral_triangle":
+              sides = 3;
+              break;
+              case "square":
+              sides = 4;
+              break;
+              case "pentagon":
+              sides = 5;
+              break;
+              case "hexagon":
+              sides = 6;
+              break;
+              case "heptagon":
+              sides = 7;
+              break;
+              case "octagon":
+              sides = 8;
+              break;
+            }
             var vertices = polygon.coordinates(sides, response.side_length, 0);
-            console.log(vertices);
+            var i;
+            for (i = 0; i < vertices.length; i++) 
+            { 
+              this.polygonPoints += vertices[i].x + "," + vertices[i].y + "  ";
+            }
+            //console.log(vertices);
             //polygonPoints
           }
    }
