@@ -7,9 +7,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 text-center">
-      <input type="text" class="form-control" id="usr" placeholder="Enter text here..">
+      <input type="text" class="form-control"  placeholder="Enter text here.."  [(ngModel)]="queryText" >
       <br>
-      <button type="button" class="btn btn-dark" >Draw</button>
+      <input type="button" class="btn btn-dark" (click)="DecodeQuery()"  value="Draw">
     </div>
   </div>
 </div>

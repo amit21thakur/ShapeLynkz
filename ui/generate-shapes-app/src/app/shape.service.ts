@@ -10,7 +10,7 @@ export class ShapeService{
     baseUri:string = "http://localhost:20298/api/shape";
     
     decode(query:string){
-        var url = url + "?query=" + query;
+        var url = this.baseUri + "?query=" + query;
         return this.http.get(url);
     }
 
