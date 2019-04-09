@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 import {ShapeService} from './shape.service';
@@ -9,7 +9,7 @@ import {ShapeService} from './shape.service';
   styleUrls: ['./app.component.css'],
   providers:[ShapeService]
 })
-export class AppComponent {
+export class AppComponent  implements AfterViewInit{
   title = 'generate-shapes-app';
 
   private _shapeService: ShapeService;
@@ -22,8 +22,20 @@ export class AppComponent {
   result = null;
   queryText:string;
 
+  @ViewChild('polygonSvg') myPolygonSvg: ElementRef;
+
+  lastSvg:ElementRef;
+  ngAfterViewInit() 
+  {
+    this.lastSvg = this.myPolygonSvg;
+  }
+
   DecodeQuery()
   {
+    if(this.lastSvg && this.lastSvg.nativeElement.lastChild != null)
+    {
+      this.lastSvg.nativeElement.removeChild(this.lastSvg.nativeElement.lastChild);
+    }
     this._shapeService.decode(this.queryText).subscribe(
         (response) => {
           console.log(response);
@@ -47,6 +59,7 @@ export class AppComponent {
    {
      this.result = response;
 
+     //this.myPolygonSvg.empty();
      this.isRegularPolygon =
       response.name == "equilateral_triangle" || 
       response.name == "square" || 
@@ -79,7 +92,7 @@ export class AppComponent {
           sides = 8;
           break;
         }
-        var vertices = polygon.coordinates(sides, response.side_length, 0);
+        var vertices = polygon.coordinates(sides, response.sideLength, 0);
         var i;
         for (i = 0; i < vertices.length; i++) 
         { 
