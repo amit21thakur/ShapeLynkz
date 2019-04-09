@@ -22,13 +22,12 @@ export class AppComponent {
   result = null;
   queryText:string;
 
-  DecodeQuery(){
-
-      this._shapeService.decode(this.queryText).subscribe(
+  DecodeQuery()
+  {
+    this._shapeService.decode(this.queryText).subscribe(
         (response) => {
           console.log(response);
-          this.result = response;
-          console.log(this.result);
+          this.setData(response);
       },
         (err) => {
           console.log(err)
@@ -37,5 +36,25 @@ export class AppComponent {
       );
   }
 
+  polygonPoints:string;
+  
+   setData(response)
+   {
+     this.result = response;
+
+     if( response.name == "equilateral_triangle" || 
+          response.name == "square" || 
+          response.name == "pentagon" || 
+          response.name == "hexagon" || 
+          response.name == "heptagon" || 
+          response.name == "octagon" )
+          {
+            var polygon = require("polygon-generator");
+            var sides = 5;
+            var vertices = polygon.coordinates(sides, response.side_length, 0);
+            console.log(vertices);
+            //polygonPoints
+          }
+   }
 
 }

@@ -11,5 +11,24 @@
       <br>
       <input type="button" class="btn btn-dark" (click)="DecodeQuery()"  value="Draw">
     </div>
+    <br>
+    
+    <!--Oval -->
+    <svg *ngIf="this.result.name === 'oval'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
+      <ellipse [attr.cx]="(this.result.width/2)+10" [attr.cy]="(this.result.height/2)+10" 
+      [attr.rx]="this.result.width/2" [attr.ry]="this.result.height/2" style="fill:white;stroke:black;stroke-width:1" />
+      Sorry, your browser does not support inline SVG.  
+    </svg>
+
+    <!--circle -->
+    <svg *ngIf="this.result.name === 'circle'" [style.height.px]="this.result.radius * 2 + 20" [style.width.px]="this.result.radius * 2 + 20" >
+      <circle [attr.cx]="this.result.radius + 10" [attr.cy]="this.result.radius + 10" [attr.r]="this.result.radius" stroke="black" stroke-width="1" fill="white" />
+    </svg>
+
+    <!--regular polygon -->
+    <svg *ngIf="this.result.name === 'equilateral_triangle' || this.result.name === 'square' || this.result.name === 'pentagon' || this.result.name === 'hexagon' || this.result.name === 'heptagon' || this.result.name === 'octagon' " [style.height.px]="this.result.side_length * 2" [style.width.px]="this.result.side_length * 2" >
+      <polygon points="200,10 250,190 160,210" style="fill:white;stroke:black;stroke-width:1" />
+    </svg>
+
   </div>
 </div>
