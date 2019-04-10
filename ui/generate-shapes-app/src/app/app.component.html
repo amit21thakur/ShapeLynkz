@@ -10,33 +10,29 @@
       <input type="text" class="form-control"  placeholder="Enter text here.."  [(ngModel)]="queryText" >
       <br>
       <input type="button" class="btn btn-dark" (click)="DecodeQuery()"  value="Draw">
-    </div>
     <br>
+    </div>
     
     <!--Oval -->
-    <svg *ngIf="this.result.name === 'oval'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
+    <svg *ngIf="!this.hasError && this.result.name === 'oval'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
       <ellipse [attr.cx]="(this.result.width/2)+10" [attr.cy]="(this.result.height/2)+10" 
       [attr.rx]="this.result.width/2" [attr.ry]="this.result.height/2" style="fill:white;stroke:black;stroke-width:1" />
-      Sorry, your browser does not support inline SVG.  
     </svg>
 
     <!--circle -->
-    <svg *ngIf="this.result.name === 'circle'" [style.height.px]="this.result.radius * 2 + 20" [style.width.px]="this.result.radius * 2 + 20" >
+    <svg *ngIf="!this.hasError && this.result.name === 'circle'" [style.height.px]="this.result.radius * 2 + 20" [style.width.px]="this.result.radius * 2 + 20" >
       <circle [attr.cx]="this.result.radius + 10" [attr.cy]="this.result.radius + 10" [attr.r]="this.result.radius" stroke="black" stroke-width="1" fill="white" />
     </svg>
 
     <!-- polygon -->
-    <svg *ngIf="this.isRegularPolygon || this.result.name === 'isosceles_triangle' || this.result.name === 'scalene_triangle' || this.result.name === 'parallelogram'" [style.height.px]="this.polygonHeight" [style.width.px]="this.polygonWidth" >
+    <svg *ngIf="!this.hasError && (this.isRegularPolygon || this.result.name === 'isosceles_triangle' || this.result.name === 'scalene_triangle' || this.result.name === 'parallelogram')" [style.height.px]="this.polygonHeight" [style.width.px]="this.polygonWidth" >
       <polygon [attr.points]="this.polygonPoints" style="fill:white;stroke:black;stroke-width:1" />
     </svg>
 
     <!--rectangle-->
-    <svg *ngIf="this.result.name === 'rectangle'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
+    <svg *ngIf="!this.hasError && this.result.name === 'rectangle'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
       <rect [attr.width]="this.result.width" [attr.height]="this.result.height" style="fill:white;stroke-width:1;stroke:rgb(0,0,0)" />
     </svg>
 
-    <!--isoscles triangle-->
-    <!--scalene triangle-->
-    <!--parallelogram-->
   </div>
 </div>

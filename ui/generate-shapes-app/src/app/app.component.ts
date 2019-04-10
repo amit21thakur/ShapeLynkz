@@ -21,6 +21,7 @@ export class AppComponent {
 
   result = null;
   queryText:string;
+  hasError = false;
 
   DecodeQuery()
   {
@@ -30,7 +31,8 @@ export class AppComponent {
           this.setData(response);
       },
         (err) => {
-          console.log(err)
+          console.log(err);
+          this.hasError = true;
           },
 
       );
