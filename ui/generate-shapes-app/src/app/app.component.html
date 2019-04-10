@@ -26,13 +26,13 @@
     </svg>
 
     <!--regular polygon -->
-    <svg #polygonSvg *ngIf="this.isRegularPolygon" [style.height.px]="this.result.sideLength * 2.5" [style.width.px]="this.result.sideLength * 2.5" >
+    <svg *ngIf="this.isRegularPolygon" [style.height.px]="this.result.side_length * 2" [style.width.px]="this.result.side_length * 2" >
       <polygon [attr.points]="this.polygonPoints" style="fill:white;stroke:black;stroke-width:1" />
     </svg>
 
     <!--rectangle-->
     <svg *ngIf="this.result.name === 'rectangle'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
-      <rect [attr.width]="this.result.width" [attr.height]="this.result.height" style="fill:white;stroke-width:1;stroke:black" />
+      <rect [attr.width]="this.result.width" height="this.result.height" style="fill:white;stroke-width:1;stroke:rgb(0,0,0)" />
     </svg>
 
     <!--isoscles triangle-->
