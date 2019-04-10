@@ -28,6 +28,7 @@ export class AppComponent {
     this._shapeService.decode(this.queryText).subscribe(
         (response) => {
           console.log(response);
+          this.hasError = false;
           this.setData(response);
       },
         (err) => {

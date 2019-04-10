@@ -33,6 +33,6 @@
     <svg *ngIf="!this.hasError && this.result.name === 'rectangle'" [style.height.px]="this.result.height + 20" [style.width.px]="this.result.width + 20" >
       <rect [attr.width]="this.result.width" [attr.height]="this.result.height" style="fill:white;stroke-width:1;stroke:rgb(0,0,0)" />
     </svg>
-
+    <app-error *ngIf="this.hasError"></app-error>
   </div>
 </div>
