@@ -28,7 +28,6 @@
         public static class Measurements
         {
             public const string Width = "width";
-            public const string Base = "base";
             public const string Height = "height";
             public const string SideLength = "side_length";
             public const string Radius = "radius";

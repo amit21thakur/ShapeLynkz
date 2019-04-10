@@ -12,7 +12,6 @@ namespace DrawShapesService.Models
 
         public int? Width => GetValue(Constants.Measurements.Width);
 
-        public int? Base => GetValue(Constants.Measurements.Base);
         public int? Height => GetValue(Constants.Measurements.Height);
         public int? SideLength => GetValue(Constants.Measurements.SideLength);
 

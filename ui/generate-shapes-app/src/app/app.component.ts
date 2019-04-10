@@ -42,6 +42,8 @@ export class AppComponent {
   parallelogramPoints = "";
 
   isRegularPolygon = false;
+  polygonHeight = 0;
+  polygonWidth = 0;
 
    setData(response)
    {
@@ -58,29 +60,37 @@ export class AppComponent {
       {
         var polygon = require("polygon-generator");
         var sides = 0;
+        var angle = 0;
+
+        this.polygonHeight = response.sideLength * 2.5;
+        this.polygonWidth = response.sideLength * 2.5;
         switch(response.name)
         {
           case "equilateral_triangle":
           sides = 3;
+          angle=60;
           break;
           case "square":
           sides = 4;
           break;
           case "pentagon":
           sides = 5;
+          angle = 36;
           break;
           case "hexagon":
           sides = 6;
           break;
           case "heptagon":
           sides = 7;
+          angle=25.7145;
           break;
           case "octagon":
           sides = 8;
           break;
         }
-        var vertices = polygon.coordinates(sides, response.side_length, 0);
+        var vertices = polygon.coordinates(sides, response.sideLength, angle);
         var i;
+        this.polygonPoints="";
         for (i = 0; i < vertices.length; i++) 
         { 
           this.polygonPoints += vertices[i].x + "," + vertices[i].y + "  ";
@@ -88,15 +98,24 @@ export class AppComponent {
       }
       if(response.name === "isosceles_triangle")
       {
-
+        this.polygonPoints = "0,"+response.height +"  "+ response.width+","+response.height + "  " + response.width/2 + ",0";
+        this.polygonHeight = response.height + 5;
+        this.polygonWidth = response.width + 5;
       }
       if(response.name === "scalene_triangle")
       {
-
+        //TODO : check for invalid triangle request - which are not possible
+        var x = Math.sqrt((response.sideLength * response.sideLength) - (response.height * response.height));
+        this.polygonPoints = "0," + response.height + "  " + response.width + "," + response.height + "  " + x + ",0";
+        this.polygonHeight = response.height + 5;
+        this.polygonWidth = Math.max(response.width, x) +5;
       }
       if(response.name === "parallelogram")
       {
-
+        var x = Math.sqrt((response.sideLength * response.sideLength) - (response.height * response.height));
+        this.polygonPoints = "0," + response.height + "  " + response.width + "," + response.height + "  " + (x+response.width) +",0  " + x + ",0";
+        this.polygonHeight = response.height + 5;
+        this.polygonWidth = response.width + x +5;
       }
    }
 

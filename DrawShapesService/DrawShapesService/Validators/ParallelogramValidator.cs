@@ -11,7 +11,7 @@ namespace DrawShapesService.Validators
                 Constants.Draw,
                 Constants.Measurements.Height,
                 Constants.Measurements.Width,
-                Constants.Measurements.Base
+                Constants.Measurements.SideLength
             };
         }
     }

@@ -10,7 +10,6 @@ namespace DrawShapesService.SyntaxValidator
         public MeasurementNameSyntaxValidator() => _expectedWords = new HashSet<string>
             {
                 Constants.Measurements.Width,
-                Constants.Measurements.Base,
                 Constants.Measurements.Height,
                 Constants.Measurements.SideLength,
                 Constants.Measurements.Radius

@@ -6,7 +6,7 @@ Draw a square with a side length of 200
 
 Draw a scalene triangle with a width of 200 and a height of 200 and a side length of 300.
 
-Draw a Parallelogram  with a base of 300 and a height of 400 and a width of 350.
+Draw a Parallelogram  with a width of 300 and a height of 150 and a side length of 250.
 
 Draw an Equilateral Triangle with a side length of 300.
 
