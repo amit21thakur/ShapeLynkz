@@ -23,3 +23,12 @@ Draw an Octagon with a side length of 200
 Draw a circle with a radius of 100
 
 Draw an Oval with a height of 200 and a width of 100
+
+### Expression Syntax
+![Expression Syntax Logic](https://github.com/amit21thakur/ShapeLynkz/blob/master/Expression_Logic.jpg)
+
+The expression is saved as a linked list, where each node corresponds to a single word in the query sentence.
+
+Each node contains an implementation of IDataReader interface - which reads word as either key or value or just ignores it.
+
+Each node contains an implementation of ISyntaxValidator interface, which validates wherether its a correct syntax.
