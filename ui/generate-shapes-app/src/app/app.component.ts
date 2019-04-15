@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgModel } from '@angular/forms';
-
+import * as Polygon from "polygon-generator";
 import {ShapeService} from './shape.service';
 
 @Component({
@@ -61,7 +61,6 @@ export class AppComponent {
       response.name == "octagon";
       if(this.isRegularPolygon)    
       {
-        var polygon = require("polygon-generator");
         var sides = 0;
         var angle = 0;
 
@@ -91,7 +90,7 @@ export class AppComponent {
           sides = 8;
           break;
         }
-        var vertices = polygon.coordinates(sides, response.sideLength, angle);
+        var vertices = Polygon.coordinates(sides, response.sideLength, angle);
         var i;
         this.polygonPoints="";
         for (i = 0; i < vertices.length; i++) 
